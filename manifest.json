@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "Netflixperation",
+  "description": "n/a",
+  "version": "1.0",
+  "browser_action": {
+    
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}
