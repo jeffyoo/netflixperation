@@ -5,13 +5,13 @@
   "description": "n/a",
   "version": "1.0",
   "background": {
-    "scripts": "app.js"
+    "page": "index.html"
   },
   "browser_action": {
     "default_popup": "index.html"
   },
   "permissions": [
-    "activeTab",
-    "storage"
+    "storage",
+    "tabs"
   ]
 }
