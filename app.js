@@ -1,16 +1,5 @@
 console.log('Hello World!');
 
-// setInterval(function() {
-//   chrome.tabs.query({
-//     active: true, 
-//     lastFocusedWindow: true
-//   }, function(tabs) {
-//     console.log('chrome.tabs.query');
-//     console.log(tabs[0].url);
-//     console.log('tabs: ', tabs)
-//   })  
-// }, 5000);
-
 // chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 //   console.log('onUpdated');
 //   console.log('tabId: ', tabId);
@@ -24,17 +13,21 @@ chrome.tabs.onUpdated.addListener(function() {
     active: true, 
     currentWindow: true
   }, function(tab) {
-    // console.log('chrome.tabs.query');
-    // console.log(tab);
-    // if (tab[0].url.indexOf('netflix')) {
-    //   console.log('YOU\'RE IN NETFLIX!');
-    // }
+    if (tab[0].url !== undefined && tab[0].status === 'complete') {
+      if (tab[0].url.indexOf('netflix') !== -1) {
+        console.log('You are in Netflix.com');
+        console.log(tab[0].url);
+
+
+        chrome.tabs.executeScript(null, {
+          file: "getPagesSource.js"
+        })
+
+
+      } else {
+        console.log('Not Netflix');
+        console.log(tab[0].url);
+      }
+    }
   })  
 })
-
-// chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  // console.log('updated!')
-  // console.log('tabId: ', tabId);
-  // console.log('changeInfo: ', changeInfo);
-  // console.log('tab: ', tab);
-// });
